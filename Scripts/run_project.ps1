@@ -26,9 +26,9 @@ else {
 }
 
 # 4. Start Background Services
-if (Test-Path "start_services.ps1") {
+if (Test-Path ".\Scripts\start_services.ps1") {
     Write-Host "Starting API Services..."
-    ./start_services.ps1
+    .\Scripts\start_services.ps1
     Start-Sleep -Seconds 3
 }
 else {
@@ -39,6 +39,5 @@ Write-Host "   - Signals API:    Port 8000"
 Write-Host "   - Alerts API:     Port 8001"
 Write-Host "   - Backtesting API: Port 8002"
 
-$env:PYTHONPATH = "C:\Users\KEERTHANA\Infosys-MachineLearning\AI-powered-stock-and-ETF-trading-platform;$env:PYTHONPATH"
 Write-Host "Starting Dashboard..."
-& python -m streamlit run "C:\Users\KEERTHANA\Infosys-MachineLearning\AI-powered-stock-and-ETF-trading-platform\0_Overview.py"
+python -m streamlit run ".\Scripts\0_Overview.py"
