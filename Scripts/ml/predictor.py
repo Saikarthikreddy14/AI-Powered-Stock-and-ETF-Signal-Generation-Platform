@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import sys
 from pathlib import Path
+
 # Add the project root to the Python path
 project_root = Path(__file__).resolve().parents[1]
 sys.path.append(str(project_root))
@@ -12,6 +13,7 @@ import numpy as np
 from pathlib import Path
 from datetime import datetime
 from typing import Dict
+from . import pradict_lstm
 try:
     import xgboost as xgb
 except ImportError:
@@ -164,9 +166,12 @@ class MLEngine:
             # Get predictions from both models
             rf_pred = float(self.rf_model.predict(features)[0])
             xgb_pred = float(self.xgb_model.predict(features)[0])
+            lstm_result = pradict_lstm.predict_stock(data.symbol)
+            lstm_pred = lstm_result['signal']
+            lstm_confidence = lstm_result['confidence']
             
-            # Average the predictions
-            avg_pred = (rf_pred + xgb_pred) / 2
+            # Average the predictions (you may want to adjust how you handle lstm confidence)
+            avg_pred = (rf_pred + xgb_pred + lstm_confidence) / 3
             
             # Calculate predicted price
             current_price = data.current_price
