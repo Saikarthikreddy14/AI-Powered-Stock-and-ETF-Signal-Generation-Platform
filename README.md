@@ -137,5 +137,31 @@ Layer 1: ML Models calculate probability.
 Layer 2: Technical Rules validate the trend.
 Signal Generation: A final BUY/SELL/HOLD signal is generated with a Confidence Score.
 Display: Results are shown on the Dashboard and sent via Email (if configured).
-Built by: Aman (DE Team)
+HOW TO RUN OLLAMA
+. Install Ollama
+Download and install Ollama from the official website:
+
+Windows/Mac/Linux: https://ollama.com/download
+
+2. Download the Model
+Open your terminal (Command Prompt, PowerShell, or Bash) and run the following command to download the OLlama model:
+
+
+
+ollama pull mistral(run this once,i.e the first time)
+
+3. Start the Ollama Server
+Ensure the Ollama application is running. You can verify this by checking your system tray (Windows/Mac) or by running:
+
+
+ollama serve
+
+(Note: The server must be active on http://localhost:11434 for the MLEngine to generate summaries.)
+
+4. Verify the Connection (Optional)
+You can test if the model is responsive by running:
+
+
+ollama run mistral 
+
 License: MIT
