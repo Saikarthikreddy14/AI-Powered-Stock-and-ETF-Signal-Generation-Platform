@@ -17,3 +17,6 @@ supabase>=2.0.0
 python-dotenv>=1.0.0
 apscheduler>=3.10.4
 requests>=2.31.0
+tensorflow>=2.13.0
+ta>=0.10.2
+feedparser
